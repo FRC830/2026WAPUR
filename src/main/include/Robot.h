@@ -24,6 +24,7 @@
 #include "MoveToPose.h"
 #include "SmartPlanner.h"
 #include "ratpack/swerve/SwerveConfig.h"
+#include "InputManager/ClawManager.h"
 
 
 class Robot : public frc::TimedRobot {
@@ -70,6 +71,8 @@ class Robot : public frc::TimedRobot {
   
   std::shared_ptr<PhotonVisionCamera> m_cam;
   std::shared_ptr<SmartPlanner> m_smartPlanner;
+
+  ClawManager m_claw;
 
   frc::XboxController m_debug{2};
 
