@@ -25,6 +25,8 @@
 #include "SmartPlanner.h"
 #include "ratpack/swerve/SwerveConfig.h"
 
+#include "InputManager/ClawManager.h"
+
 
 class Robot : public frc::TimedRobot {
  public:
@@ -73,4 +75,5 @@ class Robot : public frc::TimedRobot {
 
   frc::XboxController m_debug{2};
 
+  ClawManager m_clawManager;
 };

@@ -97,7 +97,12 @@ void Robot::TeleopInit() {
 }
 
 void Robot::TeleopPeriodic() {
-
+if (!IsAutonomous())
+  {
+    
+    m_clawManager.HandleInput(_robot_control_data);
+    _swerve.Drive(_robot_control_data.swerveInput.xTranslation, _robot_control_data.swerveInput.yTranslation, _robot_control_data.swerveInput.rotation);
+  }
 
 
 
