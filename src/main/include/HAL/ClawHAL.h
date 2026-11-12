@@ -5,7 +5,7 @@
 
 class Claw{
     public:
-        Claw();
+        Claw() = default;
         ~Claw() = default;
 
         void ClawIntake(double dir);
@@ -15,6 +15,7 @@ class Claw{
         rev::spark::SparkMax m_clawMotorA{CLAW_MOTOR_A_ID, rev::spark::SparkMax::MotorType::kBrushless};
         rev::spark::SparkMax m_clawMotorB{CLAW_MOTOR_B_ID, rev::spark::SparkMax::MotorType::kBrushless};
 
-        double m_speed = 0.5;
+        double m_speed = 0.3;
+        double m_Rspeed = 0.2;
         
 };

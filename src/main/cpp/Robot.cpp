@@ -16,7 +16,7 @@
 
 Robot::Robot() {
   m_cam = std::make_shared<PhotonVisionCamera>("cam1", ratbot::VisionConfig::ROBOT_TO_CAMERA);
-
+  SwerveInit();
   m_smartPlanner = std::make_shared<SmartPlanner>(*m_cam, _swerve);
   
   m_autoChooser = pathplanner::AutoBuilder::buildAutoChooser();
@@ -95,13 +95,16 @@ void Robot::TeleopInit() {
 
 
 }
-
+#include <iostream>
 void Robot::TeleopPeriodic() {
 
   if (!IsAutonomous()) {
     _swerve.Drive(_robot_control_data.swerveInput.xTranslation, _robot_control_data.swerveInput.yTranslation, _robot_control_data.swerveInput.rotation);
     m_claw.HandleInput(_robot_control_data);
+    std::cout << "TeleopPeriodic" << std::endl;
+    
   }
+  _controller_interface.UpdateRobotControlData(_robot_control_data);
 
 
 }

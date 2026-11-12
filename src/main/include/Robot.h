@@ -74,6 +74,6 @@ class Robot : public frc::TimedRobot {
 
   ClawManager m_claw;
 
-  frc::XboxController m_debug{2};
+
 
 };

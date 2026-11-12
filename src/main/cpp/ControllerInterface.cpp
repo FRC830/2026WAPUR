@@ -4,11 +4,10 @@
 #include <string>
 
 void ControllerInterface::UpdateRobotControlData(RobotControlData &controlData) {
-    UpdateStates(controlData);
     UpdateSwerveInput(controlData);
     UpdatePigeonInput(controlData);
     UpdateClawInput(controlData);
-
+    UpdateStates(controlData);
 }
 
 void ControllerInterface::UpdateSwerveInput(RobotControlData &controlData)
@@ -23,31 +22,44 @@ void ControllerInterface::UpdatePigeonInput(RobotControlData &controlData)
 {
     controlData.resetPigeon.reset = m_pilot.GetStartButtonPressed();
 }
-
+#include <iostream>
 void ControllerInterface::UpdateClawInput(RobotControlData &controlData)
 {
     if (controlData.states.Scoring) {
 
         controlData.clawInput.ClawState = -1;
+        std::cout << "Scoring" << std::endl;
 
     } else if (controlData.states.Intaking){
 
         controlData.clawInput.ClawState = 1;
-
+        std::cout << "Intaking" << std::endl;
     } else {
         controlData.clawInput.ClawState = 0;
+        std::cout << "Idle" << std::endl;
     }
     
 }
+
+
 void ControllerInterface::UpdateStates(RobotControlData &controlData)
 {
     
-    if (m_copilot.GetRightBumperPressed()) // Travelling
+    if (m_copilot.GetRightBumper()) // Intaking
     {
-        controlData.states.Intaking = false; // Ensure Intaking is false when Launching is toggled
-        controlData.states.Scoring = !controlData.states.Scoring; // Ensure Scoring is false when Launching is toggled
-    } else if (m_copilot.GetLeftBumperPressed()) {
-        controlData.states.Intaking = !controlData.states.Intaking; // 
+        controlData.states.Intaking = true; // Ensure Intaking is false when Launching is toggled
         controlData.states.Scoring = false; // Ensure Scoring is false when Launching is toggled
+        std::cout << "Intaking" << std::endl;
+    } else if (m_copilot.GetLeftBumper()) { // Scoring
+        controlData.states.Intaking = false; // 
+        controlData.states.Scoring = true; // Ensure Scoring is false when Launching is toggled
+        std::cout << "Scoring" << std::endl;
     } 
+    else
+    {
+        controlData.states.Intaking = false;
+        controlData.states.Scoring = false;
+        std::cout << "idle:" << std::endl;
+    }
+    std::cout << "got in update state" << std::endl;
 }
