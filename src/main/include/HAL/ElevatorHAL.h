@@ -31,11 +31,11 @@ class Elevator {
             };
 
 
-        static constexpr double kSpoolDiameter = 1.5;
-        static constexpr double kGearRatio = 10.0;
+        static constexpr double kSpoolDiameter = 1.5; //Need to be changed to actual diameter of spool
+        static constexpr double kGearRatio = 10.0; //Needt to be changed to actual gear ratio of elevator
         static constexpr double kSpoolCircumference = kSpoolDiameter * 3.14159265359;
 
-        static constexpr double kMaxHeight = 50.0; 
+        static constexpr double kMaxHeight = 50.0; //Need to be changed to actual max height of elevator
 
         int level = 0;
 

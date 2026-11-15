@@ -21,7 +21,7 @@ Robot::Robot() {
   
   m_autoChooser = pathplanner::AutoBuilder::buildAutoChooser();
   frc::SmartDashboard::PutData("Auto Chooser", &m_autoChooser);
-
+  
   _swerve.SetShouldSwerveLock(true); 
 }
 

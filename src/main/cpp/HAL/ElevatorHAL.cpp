@@ -24,7 +24,7 @@ Elevator::Elevator() {
     motionMagicConfigs.MotionMagicCruiseVelocity = temprps;// Target cruise velocity of 80 rps
     units::angular_acceleration::turns_per_second_squared_t tempacc{160.0};
     motionMagicConfigs.MotionMagicAcceleration = tempacc; // Target acceleration of 160 rps/s (0.5 seconds)
-    units::angular_acceleration::turns_per_second_squared_t tempjerk{1600};
+    units::angular_jerk::turns_per_second_cubed_t tempjerk{1600.0};
     motionMagicConfigs.MotionMagicJerk = tempjerk; // Target jerk of 1600 rps/s/s (0.1 seconds)
 
     m_elevatorA.GetConfigurator().Apply(talonFXConfigs);

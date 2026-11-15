@@ -15,6 +15,7 @@ class ControllerInterface
         void UpdateSwerveInput(RobotControlData &controlData);
         void UpdatePigeonInput(RobotControlData &controlData);
         void UpdateClawInput(RobotControlData &controlData);
+        void UpdateElevatorInput(RobotControlData &controlData);
         void UpdateStates(RobotControlData &controlData);
 
         frc::XboxController m_pilot{0};
