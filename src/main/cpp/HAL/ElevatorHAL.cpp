@@ -58,7 +58,7 @@ void Elevator::ToLevel4(){
     level = 4;
 }
 
-bool Elevator::IsElevatorAtLevel(){
+bool Elevator::IsElevatorAtLevel(int wanted){
     double current = (m_elevatorA.GetPosition().GetValue().value() / kGearRatio) * kSpoolCircumference;
-    return level == current;
+    return wanted == current;
 }

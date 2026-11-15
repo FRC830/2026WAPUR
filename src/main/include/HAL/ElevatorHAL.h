@@ -12,7 +12,7 @@ class Elevator {
         ~Elevator() = default;
 
         void MoveElevatorToPos(int level);
-        bool IsElevatorAtLevel();
+        bool IsElevatorAtLevel(int wanted);
         void ToLevel1();
         void ToLevel2();
         void ToLevel3();
