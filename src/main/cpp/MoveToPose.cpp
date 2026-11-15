@@ -73,18 +73,20 @@ std::pair<units::feet_per_second_t, units::feet_per_second_t> MoveToPose::linear
     double desiredy = desired.Y().value();
     double currenty = m_current.Y().value();
 
-    m_vx = 0;
-    m_vy = 0;
+    // m_vx = 0;
+    // m_vy = 0;
     
     double x = (desiredx - currentx) * (desiredx - currentx);
     double y = (desiredy - currenty) * (desiredy - currenty);
     
     m_distance = sqrt(x + y);
-    std::cout << "distance: " << m_distance << std::endl;
-    double theta =  atan2(desiredy-currenty ,  desiredx - currentx);
+    // std::cout << "distance: " << m_distance << std::endl;
+    // double theta =  atan2(desiredy-currenty ,  desiredx - currentx);
 
-    m_vxCoeff = cos(theta);
-    m_vyCoeff = sin(theta);
+    // m_vxCoeff = cos(theta);
+    // m_vyCoeff = sin(theta);
+    auto XMetersPerSecond = units::meters_per_second_t {m_xPID.Calculate(currentx, desiredx)};
+    auto YMetersPerSecond = units::meters_per_second_t {m_yPID.Calculate(currenty, desiredy)};
 
     auto val = ((std::fabs(m_distance) / 2.0f) * ratbot::MoveToPoseConfig::MAX_SPEED_M_PER_SEC) + ratbot::MoveToPoseConfig::SPEED_FEED_FORWARD_M_PER_SEC;
 
@@ -95,8 +97,8 @@ std::pair<units::feet_per_second_t, units::feet_per_second_t> MoveToPose::linear
         val = 0.0f;
     }
 
-    auto vx = units::meters_per_second_t{val*m_vxCoeff};
-    auto vy = units::meters_per_second_t{val*m_vyCoeff};
+    auto vx = units::meters_per_second_t{val*XMetersPerSecond};
+    auto vy = units::meters_per_second_t{val*YMetersPerSecond};
 
 
     std::pair<units::feet_per_second_t, units::feet_per_second_t> velocity = {vx, vy};

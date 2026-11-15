@@ -45,12 +45,12 @@ void ControllerInterface::UpdateClawInput(RobotControlData &controlData)
 void ControllerInterface::UpdateStates(RobotControlData &controlData)
 {
     
-    if (m_copilot.GetRightBumper()) // Intaking
+    if (m_copilot.GetRightBumperButton()) // Intaking
     {
         controlData.states.Intaking = true; // Ensure Intaking is false when Launching is toggled
         controlData.states.Scoring = false; // Ensure Scoring is false when Launching is toggled
         std::cout << "Intaking" << std::endl;
-    } else if (m_copilot.GetLeftBumper()) { // Scoring
+    } else if (m_copilot.GetLeftBumperButton()) { // Scoring
         controlData.states.Intaking = false; // 
         controlData.states.Scoring = true; // Ensure Scoring is false when Launching is toggled
         std::cout << "Scoring" << std::endl;
