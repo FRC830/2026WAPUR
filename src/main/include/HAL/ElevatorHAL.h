@@ -26,7 +26,7 @@ class Elevator {
         ctre::phoenix6::controls::MotionMagicVoltage m_request{0_tr};
         ctre::phoenix6::controls::Follower
             m_followerRequest {
-                2, 
+                ELEVATOR_MOTOR_B_ID, 
                 ctre::phoenix6::signals::MotorAlignmentValue::Opposed
             };
 

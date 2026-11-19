@@ -12,6 +12,7 @@ namespace ratbot
 {
 
     const double VOLTAGE_COMPENSATION = 10.5f;
+
     namespace VisionConfig
     {
         constexpr frc::Transform3d ROBOT_TO_CAMERA = frc::Transform3d{frc::Translation3d(15_in, -4_in, 6_in), frc::Rotation3d(0_rad, 28_deg, 0_rad)};

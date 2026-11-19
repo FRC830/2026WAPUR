@@ -13,8 +13,8 @@ Elevator::Elevator() {
 
     slot0Configs.kP = 4.8; // A position error of 2.5 rotations results in 12 V output
     slot0Configs.kI = 0; // no output for integrated error
-    slot0Configs.kD = 0.1; // A velocity error of 1 rps results in 0.1 V outputs
-    slot0Configs.kG = 6.7;
+    slot0Configs.kD = 0.1; // A veloci.ty error of 1 rps results in 0.1 V outputs
+    slot0Configs.kG = 0.1; //change later
     slot0Configs.GravityType = ctre::phoenix6::signals::GravityTypeValue::Elevator_Static;
 
 
