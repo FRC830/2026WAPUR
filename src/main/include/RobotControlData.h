@@ -33,6 +33,12 @@ struct ElevatorInput{
     int Level;
 };
 
+struct DebugInput{
+    bool forward;
+    bool backward;
+    bool turn;
+};
+
 struct RobotControlData
 {
     SwerveInput swerveInput;
@@ -40,4 +46,5 @@ struct RobotControlData
     ClawInput clawInput;
     ElevatorInput elevatorInput;
     States states;
+    DebugInput debugInput;
 };

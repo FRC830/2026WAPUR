@@ -35,7 +35,7 @@ frc::ChassisSpeeds MoveToPose::move(frc::Pose2d current, frc::Pose2d desired) {
         {
             m_current = current;
             m_rotation = angularRotation(0, 0);
-            m_translation = linearTranslation(desired);
+            m_translation = linearTranslation(current, desired);
             break;
         }
         default:
@@ -66,12 +66,12 @@ units::degrees_per_second_t MoveToPose::angularRotation(double currentDeg,double
     return units::degrees_per_second_t{omega};
 }
 
-std::pair<units::feet_per_second_t, units::feet_per_second_t> MoveToPose::linearTranslation(frc::Pose2d desired) {
+std::pair<units::feet_per_second_t, units::feet_per_second_t> MoveToPose::linearTranslation(frc::Pose2d current, frc::Pose2d desired) {
     // double distance = sqrt(pow((double)desired.X() - current.X(), 2.0) + pow(0.0 + desired.Y() - current.Y(), 2.0));
     double desiredx = desired.X().value();
-    double currentx = m_current.X().value();
+    double currentx = current.X().value();
     double desiredy = desired.Y().value();
-    double currenty = m_current.Y().value();
+    double currenty = current.Y().value();
 
     // // m_vx = 0;
     // // m_vy = 0;

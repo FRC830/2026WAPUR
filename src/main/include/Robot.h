@@ -61,7 +61,7 @@ class Robot : public frc::TimedRobot {
   Pigeon2 _gyro;
   ControllerInterface _controller_interface;
   RobotControlData _robot_control_data;
-  MoveToPose m_rotateToHub;
+  MoveToPose m_moveToPose;
 
   frc::Timer autonTimer;
   
@@ -75,6 +75,11 @@ class Robot : public frc::TimedRobot {
 
   ClawManager m_claw;
   ElevatorManager m_elevator;
+
+
+
+
+
 
 
 

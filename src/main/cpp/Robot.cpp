@@ -101,8 +101,42 @@ void Robot::TeleopPeriodic() {
   if (!IsAutonomous()) {
     _swerve.Drive(_robot_control_data.swerveInput.xTranslation, _robot_control_data.swerveInput.yTranslation, _robot_control_data.swerveInput.rotation);
     m_claw.HandleInput(_robot_control_data);
-    std::cout << "TeleopPeriodic" << std::endl;
-    
+   // std::cout << "TeleopPeriodic" << std::endl;
+
+    if (_robot_control_data.debugInput.backward)
+    {
+      frc::Translation2d stupid{units::meter_t{1},units::degree_t{180}};
+      frc::Rotation2d stupid2{units::angle::radian_t{0}};
+      frc::Pose2d debugPose{stupid, stupid2};
+
+      frc::Translation2d stupid3{units::meter_t{0},units::degree_t{0}};
+      frc::Rotation2d stupid4{units::angle::radian_t{0}};
+      frc::Pose2d debugPose1{stupid3, stupid4};
+      _swerve.Drive(m_moveToPose.linearTranslation(debugPose1, debugPose).first, m_moveToPose.linearTranslation(debugPose1, debugPose).second, units::angular_velocity::degrees_per_second_t{0});
+      std::cout << "backwards" << std::endl;
+    }
+    if (_robot_control_data.debugInput.forward)
+    {
+          frc::Translation2d stupid{units::meter_t{1},units::degree_t{0}};
+    frc::Rotation2d stupid2{units::angle::radian_t{0}};
+    frc::Pose2d debugPose{stupid, stupid2};
+
+          frc::Translation2d stupid3{units::meter_t{0},units::degree_t{0}};
+      frc::Rotation2d stupid4{units::angle::radian_t{0}};
+      frc::Pose2d debugPose1{stupid3, stupid4};
+
+      auto currPose = _swerve.GetPose();
+      std::cout << currPose.X().value() << " " << currPose.Y().value() << std::endl;
+      _swerve.Drive(m_moveToPose.linearTranslation(currPose, debugPose).first, m_moveToPose.linearTranslation(debugPose1, debugPose).second, units::angular_velocity::degrees_per_second_t{0});
+
+
+        std::cout << "forwards" << std::endl;
+
+    }
+
+
+
+
   }
   _controller_interface.UpdateRobotControlData(_robot_control_data);
 
