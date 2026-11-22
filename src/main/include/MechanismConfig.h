@@ -7,6 +7,7 @@
 #include <ctre/phoenix6/configs/Configurator.hpp>
 #include <frc/geometry/Transform3d.h>
 #include <frc/geometry/Translation3d.h>
+#include <ctre/phoenix6/Configs/MotionMagicConfigs.hpp> // cool
 
 namespace ratbot
 {
@@ -23,6 +24,23 @@ namespace ratbot
         const double TURN_FEED_FORWARD_DEG_PER_SEC = 20.0f;
         const double MAX_SPEED_M_PER_SEC = 1.32f; // todo: change!!!
         const double SPEED_FEED_FORWARD_M_PER_SEC = 0.1f; //todo: change!!!!!
+
+        
+    }   
+    namespace ElevatorConfig
+    {
+        const double P = 0.0;
+        const double I = 0.0;
+        const double D = 0.0;
+        const double kV = 0.0;
+        const double kA = 0.0;
+        const double kS = 0.0;
+        namespace ElevatorMotionMagicConfig
+        {
+            const double CRUISE_VELOCITY = 0.0;
+            const double ACCELERATION = 0.0;
+            const double JERK = 0.0;
+        }
     }
     
 }
