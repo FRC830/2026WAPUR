@@ -1,6 +1,6 @@
 #include "MoveToPose.h"
 #include "MechanismConfig.h"
-
+#include <iostream>
 // TODO: look at these files to understand how to setup and use a trapezoid move using switch statements
         // - https://github.com/FRC830/2024Robot/blob/master/src/main/include/subsystems/IntakeHAL.h (trapezoid move member variable init)
        //  - https://github.com/FRC830/2024Robot/blob/master/src/main/cpp/subsystems/IntakeHAL.cpp (ProfiledMoveToAngle function)
