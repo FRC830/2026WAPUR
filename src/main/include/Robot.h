@@ -25,6 +25,7 @@
 #include "SmartPlanner.h"
 #include "ratpack/swerve/SwerveConfig.h"
 #include "InputManager/ClawManager.h"
+#include "InputManager/ElevatorManager.h"
 
 
 class Robot : public frc::TimedRobot {
@@ -73,6 +74,7 @@ class Robot : public frc::TimedRobot {
   std::shared_ptr<SmartPlanner> m_smartPlanner;
 
   ClawManager m_claw;
+  ElevatorManager m_elevator;
 
 
 

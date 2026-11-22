@@ -1,5 +1,6 @@
 #include "Robot.h"
 #include "ratpack/swerve/SwerveConfig.h"
+#include <iostream>
 
   namespace ModulePosition
   { 
@@ -143,7 +144,7 @@ void Robot::SwerveInit(){
   {
     (*temp)[i] = &_modules[i];
   }
-  #include <iostream>
+
   std::cout<<"Configure to start"<<std::endl;
   _swerve.Configure(swerveConfig);
   _swerve.SetFieldOriented();
