@@ -33,8 +33,31 @@ Elevator::Elevator() {
 }
 
 void Elevator::MoveElevatorToPos(int level){
-    double convert = (level/kSpoolCircumference)*kGearRatio;
-    units::angle::turn_t convertrot{convert};
+    units::angle::turn_t convertrot{level1};
+    switch(level) {
+        case 1:
+        {
+            units::angle::turn_t convertrot{level1};
+        }
+        case 2:
+        {
+            
+            units::angle::turn_t convertrot{level2};
+        }
+        case 3:
+        {
+            units::angle::turn_t convertrot{level3};
+        }
+        case 4:
+        {
+            units::angle::turn_t convertrot{level4};
+        }
+        default:
+        {
+            units::angle::turn_t convertrot{level0};
+        }
+        
+    }
     m_elevatorA.SetControl(m_request.WithPosition(convertrot));
 }
 
@@ -56,6 +79,10 @@ void Elevator::ToLevel3(){
 void Elevator::ToLevel4(){
     MoveElevatorToPos(4); //Placeholder
     level = 4;
+}
+
+double Elevator::GetElevatorRot(){
+    return m_elevatorA.GetPosition().GetValue().value();
 }
 
 bool Elevator::IsElevatorAtLevel(int wanted){

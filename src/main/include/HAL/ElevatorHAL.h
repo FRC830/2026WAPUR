@@ -13,6 +13,7 @@ class Elevator {
 
         void MoveElevatorToPos(int level);
         bool IsElevatorAtLevel(int wanted);
+        double GetElevatorRot();
         void ToLevel1();
         void ToLevel2();
         void ToLevel3();
@@ -36,6 +37,12 @@ class Elevator {
         static constexpr double kSpoolCircumference = kSpoolDiameter * 3.14159265359;
 
         static constexpr double kMaxHeight = 50.0; //Need to be changed to actual max height of elevator
+
+        double level0 = 0.0;
+        double level1 = 1.0;
+        double level2 = 2.0;
+        double level3 = 3.0;
+        double level4 = 4.0;
 
         int level = 0;
 

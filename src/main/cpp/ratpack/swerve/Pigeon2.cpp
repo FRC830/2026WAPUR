@@ -8,14 +8,14 @@ Pigeon2::Pigeon2()
     // which caused dereferencing m_gyro->... to segfault.
     m_is_inverted = false;
     m_zero_heading = frc::Rotation2d();
-    m_gyro = new ctre::phoenix6::hardware::Pigeon2(39, "rio");
+    m_gyro = new ctre::phoenix6::hardware::Pigeon2(6, "rio");
 }
 
 void Pigeon2::Configure(GyroConfig &config)
 {
     // Ensure the hardware object exists. If config provided fields, apply them here.
     if (m_gyro == nullptr) {
-        m_gyro = new ctre::phoenix6::hardware::Pigeon2(39, "rio");
+        m_gyro = new ctre::phoenix6::hardware::Pigeon2(6, "rio");
     }
     // m_is_inverted = config.is_inverted;
     // m_zero_heading = config.zero_heading;
