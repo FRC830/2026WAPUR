@@ -14,10 +14,12 @@ class Elevator {
         void MoveElevatorToPos(int level);
         bool IsElevatorAtLevel(int wanted);
         double GetElevatorRot();
+        double GetBElevatorRot();
         void ToLevel1();
         void ToLevel2();
         void ToLevel3();
         void ToLevel4();
+
 
     private:
         ctre::phoenix6::hardware::TalonFX m_elevatorA{ELEVATOR_MOTOR_A_ID};
@@ -27,7 +29,7 @@ class Elevator {
         ctre::phoenix6::controls::MotionMagicVoltage m_request{0_tr};
         ctre::phoenix6::controls::Follower
             m_followerRequest {
-                2, 
+                ELEVATOR_MOTOR_A_ID,
                 ctre::phoenix6::signals::MotorAlignmentValue::Opposed
             };
 
@@ -41,8 +43,8 @@ class Elevator {
         double level0 = 0.0;
         double level1 = 1.0;
         double level2 = 2.0;
-        double level3 = 3.0;
-        double level4 = 4.0;
+        double level3 = 10.0;
+        double level4 = 20.0;
 
         int level = 0;
 
